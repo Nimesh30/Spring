@@ -1,0 +1,62 @@
+Types of Dependency Injection in Spring
+1️⃣ Constructor Injection
+
+Injection through constructor
+
+public class Car {
+    private Engine engine;
+
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+}
+
+
+📌 Best & recommended
+📌 Dependency is mandatory
+
+2️⃣ Setter Injection
+
+Injection through setter method
+
+public class Car {
+    private Engine engine;
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+}
+
+
+📌 Used for optional dependencies
+
+3️⃣ Field Injection
+
+Injection directly into field
+
+@Autowired
+private Engine engine;
+
+
+📌 Easy to write
+📌 Not recommended for clean design
+
+🔥 IMPORTANT INTERVIEW NOTE
+
+❗ Spring officially supports only constructor and setter injection
+❗ Field injection is a convenience feature, not a design best practice
+
+Comparison (quick memory table)
+Type	How injected	Recommended
+-------------------------------------
+Constructor	Constructor	✅ YES
+Setter	Setter method	⚠ Sometimes
+Field	Direct field	❌ NO
+One-line exam answer 📝
+
+Spring supports three types of dependency injection: Constructor Injection, Setter Injection, and Field Injection.
+
+Final tip (real-world rule)
+
+👉 Use constructor injection by default
+👉 Avoid field injection in production code
