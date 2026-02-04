@@ -1,0 +1,7 @@
+@Autowired → Inject dependency automatically
+
+@SpringBootApplication → Entry point & auto-configuration
+
+@Component → Marks class as Spring bean
+
+@RestController → REST API controller returning JSON
