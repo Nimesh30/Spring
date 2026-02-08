@@ -23,9 +23,15 @@ public class ProductController {
     public Product getProduct(@PathVariable int id) {
         return service.getOneProduct(id);
     }
+
     @PostMapping("/products")
     public void addProduct( @RequestBody Product prod) {
-//        System.out.println(" added product");
         service.addProduct(prod);
+    }
+
+    @PutMapping("products/{id}")
+    public void updateProduct(@PathVariable int id,@RequestBody Product prod) {
+//        System.out.println("from update product controller");
+        service.updateProduct(id,prod);
     }
 }
