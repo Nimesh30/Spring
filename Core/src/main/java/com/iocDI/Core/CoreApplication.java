@@ -18,4 +18,4 @@ public class CoreApplication {
 		car.setAge(18);
 		System.out.println(car.getAge());
 	}
-}
+} 

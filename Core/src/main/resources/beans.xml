@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="car" class="com.iocDI.Core.Car">
+    <bean id="car" class="com.iocDI.Core.Car" primary="true">
     <constructor-arg ref="engine"/>
     </bean>
     <bean id="engine" class="com.iocDI.Core.Engine"/>
