@@ -3,14 +3,15 @@ package com.Student.StudentApp.controller;
 import com.Student.StudentApp.entities.Student;
 import com.Student.StudentApp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(
-        origins = "http://localhost:5173"
-)
-
+//@CrossOrigin(
+//        origins = "http://localhost:5173"
+//)
+@CrossOrigin("*")
 @RequestMapping("/students")
 @RestController
 public class StudentController {
