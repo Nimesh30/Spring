@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import StudentService from "../services/StudentService";
+import "../styles/StudentForm.css";
+
 
 function StudentForm() {
   const navigate = useNavigate();
@@ -43,87 +45,120 @@ function StudentForm() {
       StudentService.addStudent(student).then(() => navigate("/"));
     }
   };
-
   return (
-    <div>
+    <div className="form-container">
       <h2>{id ? "Edit Student" : "Add Student"}</h2>
 
       <form onSubmit={saveOrUpdateStudent}>
-        <input
-          name="firstName"
-          value={student.firstName}
-          onChange={handleChange}
-          placeholder="First Name"
-          required
-        />
-        <input
-          name="lastName"
-          value={student.lastName}
-          onChange={handleChange}
-          placeholder="Last Name"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          value={student.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-        />
-        <input
-          type="date"
-          name="dob"
-          value={student.dob}
-          onChange={handleChange}
-        />
+        <div className="form-group">
+          <label>First Name</label>
+          <input
+            name="firstName"
+            value={student.firstName}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <select
-          name="gender"
-          value={student.gender}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
+        <div className="form-group">
+          <label>Last Name</label>
+          <input
+            name="lastName"
+            value={student.lastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <input
-          type="date"
-          name="admissionDate"
-          value={student.admissionDate}
-          onChange={handleChange}
-        />
-        <input
-          name="className"
-          value={student.className}
-          onChange={handleChange}
-          placeholder="Class"
-        />
-        <input
-          name="city"
-          value={student.city}
-          onChange={handleChange}
-          placeholder="City"
-        />
-        <input
-          name="stateCode"
-          value={student.stateCode}
-          onChange={handleChange}
-          placeholder="State Code"
-        />
-        <input
-          name="country"
-          value={student.country}
-          onChange={handleChange}
-          placeholder="Country"
-        />
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={student.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <button type="submit">{id ? "Update" : "Save"}</button>
-        <button type="button" onClick={() => navigate("/")}>
-          Cancel
-        </button>
+        <div className="form-group">
+          <label>Date of Birth</label>
+          <input
+            type="date"
+            name="dob"
+            value={student.dob}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Gender</label>
+          <select
+            name="gender"
+            value={student.gender}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label>Admission Date</label>
+          <input
+            type="date"
+            name="admissionDate"
+            value={student.admissionDate}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Class</label>
+          <input
+            name="className"
+            value={student.className}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>City</label>
+          <input name="city" value={student.city} onChange={handleChange} />
+        </div>
+
+        <div className="form-group">
+          <label>State Code</label>
+          <input
+            name="stateCode"
+            value={student.stateCode}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Country</label>
+          <input
+            name="country"
+            value={student.country}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="button-group">
+          <button type="submit" className="save">
+            {id ? "Update" : "Save"}
+          </button>
+          <button
+            type="button"
+            className="cancel"
+            onClick={() => navigate("/")}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
