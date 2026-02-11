@@ -19,26 +19,30 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    // Get All students
     @GetMapping
     public List<Student> getAllStudent(){
         return studentService.getAllStudents();
     }
 
+    //Get student By Id
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable int id){
         return studentService.getOneStudent(id);
     }
 
+    //Add student
     @PostMapping
     public void addStudent(@RequestBody Student student){
         studentService.addStudent(student);
     }
 
+    //Delete student
     @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable int id){
         studentService.deleteStudent(id);
     }
-
+    //Update the data
     @PutMapping("/{id}")
     public void updateStudent(@PathVariable int id, @RequestBody Student student){
         studentService.updateStudent(id,student);

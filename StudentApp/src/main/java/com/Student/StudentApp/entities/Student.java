@@ -18,7 +18,7 @@ public class Student {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
     @Column(name = "dob")
     private String dob;
@@ -34,6 +34,8 @@ public class Student {
     private String stateCode;
     @Column(name = "country")
     private String country;
+    @Column(name = "is_deleted")
+    private boolean isDeleted = false;
 
 
 
