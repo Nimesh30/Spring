@@ -2,11 +2,9 @@ package com.Student.StudentApp.service;
 
 import com.Student.StudentApp.entities.Student;
 import com.Student.StudentApp.repository.StudentRepo;
-import org.hibernate.metamodel.model.domain.internal.ListAttributeImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,12 +24,13 @@ public class StudentService {
         return studentRepo.findByIsDeletedFalse();
     }
 
-    public Student getOneStudent( int id) {
-        return  studentRepo.findById(id).get();
+    public Student getOneStudent(int id) {
+        return studentRepo.findById(id).get();
     }
 
-    public void addStudent(Student student) {
+    public Student addStudent(Student student) {
         studentRepo.save(student);
+        return student;
     }
 // This method is removing the record from the database.
 //    public void deleteStudent(int id) {
@@ -39,11 +38,9 @@ public class StudentService {
 //    }
 
 
-
     public void deleteStudent(int id) {
 
-        Student student = studentRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+        Student student = studentRepo.findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
 
         student.setDeleted(true);   // mark as deleted
         studentRepo.save(student);    // update record instead of deleting
@@ -58,8 +55,7 @@ public class StudentService {
 
     public void updateStudent(int id, Student student) {
 
-        Student existing = studentRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+        Student existing = studentRepo.findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
 
         existing.setFirstName(student.getFirstName());
         existing.setLastName(student.getLastName());

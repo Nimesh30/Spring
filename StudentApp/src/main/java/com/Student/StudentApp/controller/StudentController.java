@@ -3,7 +3,6 @@ package com.Student.StudentApp.controller;
 import com.Student.StudentApp.entities.Student;
 import com.Student.StudentApp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +41,7 @@ public class StudentController {
     public void deleteStudent(@PathVariable int id){
         studentService.deleteStudent(id);
     }
+
     //Update the data
     @PutMapping("/{id}")
     public void updateStudent(@PathVariable int id, @RequestBody Student student){
