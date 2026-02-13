@@ -22,9 +22,12 @@ function StudentList() {
 
   //  Delete student
   const deleteStudent = (id) => {
-    StudentService.deleteStudent(id).then(() => {
+    if(confirm("Are you want to delete"))
+          StudentService.deleteStudent(id).then(() => {
       getAllStudents();
     });
+
+
   };
 
   //  Calculate age 
@@ -48,9 +51,16 @@ function StudentList() {
       months += 12;
     }
 
-    const weeks = Math.floor(days / 7);
-
-    return `${years} years ${months} months ${weeks} weeks`;
+    // const weeks = Math.floor(days / 7);
+      if(months!=0 && days!=0){
+        return `${years} years ${months} months ${days} days`;
+      }else if(months==0 && days==0){
+        return `${years} years`;
+      }else if (days == 0) {
+        return `${years} years ${months} months`;
+      }else if(months==0){
+        return `${years} years ${days} days`;
+      }
   };
 
   const getLocation = (student) => {

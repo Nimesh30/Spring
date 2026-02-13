@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import StudentService from "../services/StudentService";
+import { validateStudentForm } from "../services/validation";
 import "../styles/StudentForm.css";
 
 
@@ -39,10 +40,22 @@ function StudentForm() {
   const saveOrUpdateStudent = (e) => {
     e.preventDefault();
 
+    if(!validateStudentForm(student)){
+      return 
+    }
+
     if (id) {
-      StudentService.updateStudent(id, student).then(() => navigate("/"));
+      StudentService.updateStudent(id, student)
+        .then(() => navigate("/"))
+        .catch((error) => {
+          alert(error.response?.data?.message || "Email already exists....");
+        });
     } else {
-      StudentService.addStudent(student).then(() => navigate("/"));
+      StudentService.addStudent(student)
+        .then(() => navigate("/"))
+        .catch((error) => {
+          alert(error.response?.data?.message || "Something went wrong");
+        });
     }
   };
   return (
@@ -163,5 +176,5 @@ function StudentForm() {
     </div>
   );
 }
-
+<script src="../service/validation.js"></script>
 export default StudentForm;
