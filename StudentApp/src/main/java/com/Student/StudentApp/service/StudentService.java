@@ -2,6 +2,7 @@ package com.Student.StudentApp.service;
 
 import com.Student.StudentApp.entities.Student;
 import com.Student.StudentApp.repository.StudentRepo;
+import com.cloudinary.Cloudinary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,8 @@ public class StudentService {
 
     @Autowired
     StudentRepo studentRepo;
+    @Autowired
+    Cloudinary cloudinary;
 
     // This method retrieves all student records from the database using the findAll() method
     // provided by the JpaRepository interface.
@@ -29,6 +32,7 @@ public class StudentService {
     }
 
     public Student addStudent(Student student) {
+        System.out.println(student);
         studentRepo.save(student);
         return student;
     }

@@ -1,6 +1,8 @@
 package com.Student.StudentApp.validation;
 
 import com.Student.StudentApp.entities.Student;
+import lombok.Getter;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -124,21 +126,12 @@ public class StudentValidator {
     /**
      * Inner class to hold validation results
      */
+    @Getter
     public static class ValidationResult {
-        private boolean isValid;
-        private List<String> errors;
+        private final List<String> errors;
 
         public ValidationResult(boolean isValid, List<String> errors) {
-            this.isValid = isValid;
             this.errors = errors;
-        }
-
-        public boolean isValid() {
-            return isValid;
-        }
-
-        public List<String> getErrors() {
-            return errors;
         }
 
         public String getErrorMessage() {

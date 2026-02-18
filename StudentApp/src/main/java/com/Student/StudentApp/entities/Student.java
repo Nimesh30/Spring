@@ -25,7 +25,7 @@ public class Student {
     @Column(name = "gender")
     private String gender;
     @Column(name = "admission_date")
-    private Date admissionDate;
+    private String admissionDate;
     @Column(name = "class")
     private String className;
     @Column(name = "city")
@@ -36,7 +36,7 @@ public class Student {
     private String country;
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
-
-
+    private String imageUrl;
+    private String publicId;
 
 }
