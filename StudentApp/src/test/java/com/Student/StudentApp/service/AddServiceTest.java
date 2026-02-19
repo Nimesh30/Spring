@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(MockitoExtension.class)
-public class StudentServiceTest {
+public class AddServiceTest {
 
     @Mock
     StudentRepo studentRepo;
@@ -36,9 +36,9 @@ public class StudentServiceTest {
         student.setEmail("nimesh@gmail.com");
         student.setDob("30/06/2004");
         student.setGender("Male");
-        student.setAdmissionDate(new Date());
-        student.setCity("Shanghai");
-        student.setCountry("China");
+        student.setAdmissionDate("01/06/2020");
+        student.setCity("Palanpur");
+        student.setCountry("India");
         student.setClassName("A");
         student.setStateCode("GJ");
 
