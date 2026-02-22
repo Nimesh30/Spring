@@ -23,7 +23,7 @@ function StudentList() {
   //  Delete student
   const deleteStudent = (id) => {
     if(confirm("Are you want to delete"))
-          StudentService.deleteStudent(id).then(() => {
+          StudentService.deleteStudent(id).then((res) => {
       getAllStudents();
     });
 
@@ -111,6 +111,7 @@ function StudentList() {
             <th>Gender</th>
             <th>Class</th>
             <th>Location</th>
+            <th>Photo</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -128,6 +129,7 @@ function StudentList() {
                 <td>{student.gender}</td>
                 <td>{student.className}</td>
                 <td>{getLocation(student)}</td>
+                <td>{student.photo ? <img src={student.photo} alt="Profile" width="50" height="50" /> : "No Photo"}</td>
                 <td>
                   <button
                     onClick={() => navigate(`/edit-student/${student.id}`)}
